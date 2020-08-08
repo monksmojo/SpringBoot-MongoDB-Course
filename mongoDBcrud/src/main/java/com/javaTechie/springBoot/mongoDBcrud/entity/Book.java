@@ -8,11 +8,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Getter
 @Setter
 
-@Document(collation = "Book")
+@Document(collection = "Book")
 public class Book {
 
     @Id
-    private Long id;
+    private Integer id;
     private String bookName;
     private String authorName;
     private String type;
@@ -22,7 +22,7 @@ public class Book {
     public Book() {
     }
 
-    public Book(Long id, String bookName, String authorName, String type, Integer numberOfPages, Double price) {
+    public Book(Integer id, String bookName, String authorName, String type, Integer numberOfPages, Double price) {
         this.id = id;
         this.bookName = bookName;
         this.authorName = authorName;
