@@ -1,4 +1,4 @@
-package com.examples.kris.springBootmongo;
+package com.examples.kris.springBootmongo.entity;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Document(collection = "Book")
 @Getter
 @Setter
-public class entity {
+public class Book {
 
     @Field(name = "book_id")
     @Id
@@ -20,7 +20,7 @@ public class entity {
 
     private String author;
 
-    public entity(Long bookId, String bookName, String author) {
+    public Book(Long bookId, String bookName, String author) {
         this.bookId = bookId;
         this.bookName = bookName;
         this.author = author;
