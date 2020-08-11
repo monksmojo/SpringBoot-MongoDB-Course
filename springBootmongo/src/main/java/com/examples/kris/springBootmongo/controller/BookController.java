@@ -1,5 +1,6 @@
 package com.examples.kris.springBootmongo.controller;
 
+import com.examples.kris.springBootmongo.DTO.BookDTO;
 import com.examples.kris.springBootmongo.entity.Book;
 import com.examples.kris.springBootmongo.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,9 +48,15 @@ public class BookController {
     }
 
     @DeleteMapping(path = "/delete-book/{bookId}")
-    public ResponseEntity<String> deleteBook(Long bookId){
+    public ResponseEntity<String> deleteBook(@PathVariable Long bookId){
         bookService.removeBook(bookId);
         return new ResponseEntity<>("the book has been removed",HttpStatus.NO_CONTENT);
+    }
+
+    @PutMapping(path = "/update-book/{id}")
+    public ResponseEntity<Book> updateBook(@PathVariable Long id,@RequestBody BookDTO bookDto){
+        Book book=bookService.updateBook(id,bookDto).orElse(null);
+        return new ResponseEntity<>(book,HttpStatus.CREATED);
     }
 
 }
